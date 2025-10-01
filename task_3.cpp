@@ -21,6 +21,7 @@ void employee_info(Salary *employee) {
 }
 
 int main(void) {
-
+    Salary employee;
+    employee_info(&employee);
     return 0;
 }

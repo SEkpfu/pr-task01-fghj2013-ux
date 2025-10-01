@@ -14,6 +14,18 @@ struct Salary{
     tax(0), surname(SURNAME_LENGTH, '\0'){}
 };
 
+void all_in_one_for_salary(Salary *employee, int num) {
+    if (!employee) return;
+    const float tax = 0.13f;
+    float earns = employee->hours * employee->earnings_hour * 
+                (1.0f + (employee->extra / 100.0f));
+
+    employee->tax = earns * tax;
+    employee->salary = earns - employee->tax;
+
+    std::cout << num << "st will get: " << employee->salary << '\n';
+}
+
 int employee_cmp(Salary *employee1, Salary *employee2) {
     int ans = 0;
 

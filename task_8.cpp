@@ -25,9 +25,6 @@ void all_in_one_for_salary(Salary *employee) {
 int main(void) {
     int n;
     std::cin >> n;
-    
-    std::vector<float> salaries(0, n);
-    std::vector<float> taxes(0, n);
     std::vector<Salary> employees;
     for (int i = 0; i < n; ++i) {
         Salary tmp;
@@ -36,32 +33,30 @@ int main(void) {
 
         employees.push_back(tmp);
         all_in_one_for_salary(&employees[i]);
-        salaries[i] = employees[i].salary;
-        taxes[i] = employees[i].tax;
     }
 
     int min_i = 0;
-    float min = salaries[0];
+    float min = employees[0].salary;
     int max_i = 0;
-    float max = salaries[0];
+    float max = employees[0].salary;
     int cnt = 0;
     std::vector<int> indexes;
     float all_taxes = 0;
     for (int i = 0; i < n; ++i) {
-        all_taxes += taxes[i];
+        all_taxes += employees[i].tax;
 
-        if (salaries[i] > 50000.f) {
+        if (employees[0].tax > 50000.f) {
             ++cnt;
             indexes.push_back(i);
         }
 
-        if (min > salaries[i]) {
-            min = salaries[i];
+        if (min > employees[i].salary) {
+            min = employees[i].salary;
             min_i = i;
         }
 
-        if (max < salaries[i]) {
-            max = salaries[i];
+        if (max < employees[i].salary) {
+            max = employees[i].salary;
             max_i = i;
         }
     }
